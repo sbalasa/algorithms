@@ -1,11 +1,5 @@
 #!/bin/python3
 
-import math
-import os
-import random
-import re
-import sys
-
 
 # The function accepts 2D_INTEGER_ARRAY arr as parameter.
 def diagonalDifference(arr):
