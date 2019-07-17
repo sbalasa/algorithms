@@ -3,8 +3,7 @@
 
 def staircase(n):
     for i in range(n):
-        print_hash = " "*(n-i-1) + "#"*(i+1)
-        print(print_hash)
+        print(" "*(n-i-1) + "#"*(i+1))
 
 
 if __name__ == '__main__':
