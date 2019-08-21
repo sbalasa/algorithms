@@ -56,7 +56,7 @@ class LinkedList:
     def display(self):
         temp = self.head
         while temp:
-            print(temp.data)
+            print(temp.data, end=" ")
             temp = temp.next
 
     def clear(self):
