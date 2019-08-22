@@ -13,10 +13,10 @@ class LinkedList:
         if not self.head:
             self.head = new_node
         else:
-            last = self.head
-            while last.next:
-                last = last.next
-            last.next = new_node
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_node
 
     def insert_beg(self, data):
         new_node = Node(data)
@@ -29,21 +29,20 @@ class LinkedList:
         else:
             new_node = Node(data)
             temp = self.head
-            while pos-1:
+            while pos - 1:
                 temp = temp.next
                 pos -= 1
             new_node.next = temp.next
             temp.next = new_node
 
-    def delete(self, data):
+    def display(self):
+        if not self.head:
+            return "List is Empty"
         temp = self.head
-        while temp.next.data != data:
+        while temp:
+            print(temp.data, end=" ")
             temp = temp.next
-        prev = temp
-        temp = self.head
-        while temp.data != data:
-            temp = temp.next
-        prev.next = temp.next
+        print("\n")
 
     def size(self):
         count = 0
@@ -51,13 +50,60 @@ class LinkedList:
         while temp:
             count += 1
             temp = temp.next
-        print(count)
+        return count
 
-    def display(self):
+    def delete(self, data):
         temp = self.head
-        while temp:
-            print(temp.data, end=" ")
-            temp = temp.next
+        prev = self.head
+        try:
+            while prev.next.data != data:
+                prev = prev.next
+            while temp.data != data:
+                temp = temp.next
+            prev.next = temp.next
+        except AttributeError:
+            self.head = temp.next
+
+    def delete_pos(self, pos):
+        if not self.head:
+            return "List is Empty"
+        temp = self.head
+        try:
+            count = pos
+            count_prev = pos
+            temp_prev = self.head
+            while count_prev - 1:
+                temp_prev = temp_prev.next
+                count_prev -= 1
+            while count:
+                temp = temp.next
+                count -= 1
+            temp_prev.next = temp.next
+        except AttributeError:
+            self.head = temp.next
+
+    def search(self, data):
+        temp = self.head
+        pos = 0
+        try:
+            while temp.data != data:
+                temp = temp.next
+                pos += 1
+            if temp.data == data:
+                print(pos)
+        except AttributeError:
+            print(-1)
+
+    def get_data(self, pos):
+        temp = self.head
+        count = 0
+        try:
+            while count != pos:
+                temp = temp.next
+                count += 1
+            print(temp.data)
+        except AttributeError:
+            print(-1)
 
     def clear(self):
         self.head = None
@@ -74,7 +120,10 @@ if __name__ == "__main__":
     L1.append(90)
     L1.delete(4)
     L1.delete(3)
+    L1.delete_pos(0)
     L1.display()
+    L1.search(90)
+    L1.get_data(77)
     L1.size()
     L1.clear()
     L1.size()
