@@ -129,10 +129,11 @@ def solution_three():
 def solution_four():
     print("Solution Four:")
     polygon = [(1, 1), (1, 5), (10, 5), (10, 1)]
-    points = [(3, 3), (7, 5), (5, 6)]
+    points = [(3, 3), (7, 5), (5, 6), (0, 0)]
+    min_x, min_y = min(polygon)
     max_x, max_y = max(polygon)
     for i in points:
-        print("Inside") if i[0] <= max_x and i[1] <= max_y else print("Outside")
+        print("Inside") if min_x <= i[0] <= max_x and min_y <= i[1] <= max_y else print("Outside")
     print("-" * 100)
     print("\n")
 
